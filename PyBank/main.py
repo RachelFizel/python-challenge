@@ -27,8 +27,8 @@ with open(csvpath) as csvfile:
         total = total + input_profit_loss
 
         if (input_profit_loss > greatest_increase_in_profit):
-            print(greatest_increase_in_profit)
             greatest_increase_in_profit = input_profit_loss
+            greatest_increase_in_profit_month = input_date
 
 
 
@@ -40,7 +40,7 @@ with open(csvpath) as csvfile:
 
     print("Total: $" + str(total))
 
-    print("Greatest Increase in Profits: " + str(greatest_increase_in_profit))
+    print("Greatest Increase in Profits: " + str(greatest_increase_in_profit_month) + " (" + str(greatest_increase_in_profit) + ")")
     
 
 
