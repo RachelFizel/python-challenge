@@ -11,8 +11,24 @@ with open(csvpath) as csvfile:
 
     csv_header = next(csvreader)
 
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
+
+    total = 0
 
     for row in csvreader:
-        print(row)
+
+        input_date = row[0]
+        input_profit_loss = int(row[1])
+
+        total = total + input_profit_loss
+
+
+
+    print ("Financial Analysis")
+    print ("--------------------------")
+
+    print("Total: $" + str(total))
+    
+
+
         
