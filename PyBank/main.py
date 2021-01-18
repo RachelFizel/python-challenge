@@ -15,6 +15,7 @@ with open(csvpath) as csvfile:
 
     count = 0
     total = 0
+    greatest_increase_in_profit = 0
 
     for row in csvreader:
 
@@ -25,6 +26,10 @@ with open(csvpath) as csvfile:
 
         total = total + input_profit_loss
 
+        if (input_profit_loss > greatest_increase_in_profit):
+            print(greatest_increase_in_profit)
+            greatest_increase_in_profit = input_profit_loss
+
 
 
     print ("  ")
@@ -34,6 +39,8 @@ with open(csvpath) as csvfile:
     print("Total Months: " + str(count))
 
     print("Total: $" + str(total))
+
+    print("Greatest Increase in Profits: " + str(greatest_increase_in_profit))
     
 
 
