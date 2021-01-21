@@ -43,7 +43,7 @@ with open(csvpath) as csvfile:
             change_in_profit_loss = change_in_profit_loss + difference_profit_loss
     
 
-    #output analysis
+    #output analysis to the terminal
     print ("  ")
     print ("Financial Analysis")
     print ("--------------------------")
@@ -60,5 +60,21 @@ with open(csvpath) as csvfile:
     print("Greatest Increase in Profits: " + str(greatest_increase_in_profit_month) + " ($" + str(greatest_increase_in_profit) + ")")
     print("Greatest Decrease in Profits: " + str(greatest_decrease_in_profit_month) + " ($" + str(greatest_decrease_in_profit) + ")")
 
+    #output analysis to a text file
+    f = open("Financial Analysis.txt", "w")
 
+    f.write ("Financial Analysis\n")
+    f.write ("--------------------------\n")
+
+    f.write("Total Months: " + str(count) + "\n")
+
+    f.write("Total: $" + str(total) + "\n")
+
+    f.write("Average Change: $" + str(average_change) + "\n")
+
+    f.write("Greatest Increase in Profits: " + str(greatest_increase_in_profit_month) + " ($" + str(greatest_increase_in_profit) + ")\n")
+    f.write("Greatest Decrease in Profits: " + str(greatest_decrease_in_profit_month) + " ($" + str(greatest_decrease_in_profit) + ")\n")
+
+    
+    f.close()
         
