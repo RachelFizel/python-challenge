@@ -11,20 +11,20 @@ with open(csvpath) as csvfile:
 
     csv_header = next(csvreader)
 
-    #print(f"CSV Header: {csv_header}")
-
     count = 0
     total = 0
     greatest_increase_in_profit = 0
     greatest_decrease_in_profit = 0
+    change_in_profit_loss = 0
     last_profit_loss = 0
 
+    #loop through each row in the csv file and calculate difference and total
     for row in csvreader:
 
         input_date = row[0]
         input_profit_loss = int(row[1])
         difference_profit_loss = int(row[1]) - last_profit_loss
-
+        
         count = count + 1
 
         total = total + input_profit_loss
@@ -39,9 +39,11 @@ with open(csvpath) as csvfile:
 
         last_profit_loss = input_profit_loss
 
+        if count != 1:
+            change_in_profit_loss = change_in_profit_loss + difference_profit_loss
+    
 
-
-
+    #output analysis
     print ("  ")
     print ("Financial Analysis")
     print ("--------------------------")
@@ -50,8 +52,13 @@ with open(csvpath) as csvfile:
 
     print("Total: $" + str(total))
 
-    print("Greatest Increase in Profits: " + str(greatest_increase_in_profit_month) + " (" + str(greatest_increase_in_profit) + ")")
-    print("Greatest Decrease in Profits: " + str(greatest_decrease_in_profit_month) + " (" + str(greatest_decrease_in_profit) + ")")
+    average_change = change_in_profit_loss / (count - 1)
+    average_change = round(average_change, 2)
+
+    print("Average Change: $" + str(average_change))
+
+    print("Greatest Increase in Profits: " + str(greatest_increase_in_profit_month) + " ($" + str(greatest_increase_in_profit) + ")")
+    print("Greatest Decrease in Profits: " + str(greatest_decrease_in_profit_month) + " ($" + str(greatest_decrease_in_profit) + ")")
 
 
         
