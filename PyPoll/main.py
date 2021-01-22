@@ -3,10 +3,12 @@ import os
 # module for reading CSV files
 import csv
 
-csvpath = os.path.join("Resources", "election_data.csv")
-
+#csvpath = os.path.join("Resources", "election_data.csv")
+#the below is so I can step through the code in visual studio
+csvpath = os.path.join("C:\\Users\\rache\\Desktop\\python-challenge\\PyPoll\\Resources", "election_data.csv")
 
 total_count_of_votes = 0
+
 
 
 # Open the CSV
@@ -15,6 +17,8 @@ with open(csvpath) as csvfile:
 
     csv_header = next(csvreader)
 
+    #make a dictionary of the candidates
+    candidates = {}
 
     #loop through each row in the csv file
     for row in csvreader:
@@ -26,7 +30,20 @@ with open(csvpath) as csvfile:
         #count the number of votes cast
         total_count_of_votes += 1
 
-   
+        #candidate = candidates[input_candidate] 
+        #pull the vote count from the diction for the candidate that is in the input 
+        vote_count = candidates.get(input_candidate)
+        
+        if vote_count is None:
+            #if the input candidate is not in the list yet add it and set his vote count to 1
+            candidates[input_candidate] = 1
+            
+        else:
+            #the candidate is in the list so increase his vote count
+            vote_count += 1
+            #put that value back in the dictionary
+            candidates[input_candidate] = vote_count
+            
 
 
 print (" ")
@@ -35,3 +52,14 @@ print ("------------------------")
 
 print ("Total Votes: " + str(total_count_of_votes))
 print ("------------------------")
+
+
+#for x in candidates.items():
+print (candidates)
+
+for key in candidates:
+    #candidates.get
+    print (key, ":" , "(", candidates[key] , ")")
+#    print(f'{candidates["name"]} has votes {candidates["vote"]}')
+    
+
