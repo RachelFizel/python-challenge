@@ -3,6 +3,8 @@ import os
 # module for reading CSV files
 import csv
 
+import operator
+
 #csvpath = os.path.join("Resources", "election_data.csv")
 #the below is so I can step through the code in visual studio
 csvpath = os.path.join("C:\\Users\\rache\\Desktop\\python-challenge\\PyPoll\\Resources", "election_data.csv")
@@ -48,10 +50,10 @@ with open(csvpath) as csvfile:
 
 print (" ")
 print ("Election Results")
-print ("------------------------")
+print ("-----------------------------")
 
 print ("Total Votes: " + str(total_count_of_votes))
-print ("------------------------")
+print ("-----------------------------")
 
 
 
@@ -66,6 +68,12 @@ for key in candidates:
     
     #candidates.get
     print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
+
+winner = max(candidates.items(), key=operator.itemgetter(1))[0]
+
+print ("-----------------------------")
+print ("Winner: " + winner)
+print ("-----------------------------")
 
 
     
