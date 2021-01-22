@@ -54,12 +54,19 @@ print ("Total Votes: " + str(total_count_of_votes))
 print ("------------------------")
 
 
-#for x in candidates.items():
-print (candidates)
 
+# to print the whole dictionary
+# print (candidates)
+
+#loop through each record in the dictionary and output the results
 for key in candidates:
+    vote_percentage = candidates[key] / total_count_of_votes
+    vote_percentage = vote_percentage * 100
+    vote_percentage = round(vote_percentage, 4)
+    
     #candidates.get
-    print (key, ":" , "(", candidates[key] , ")")
-#    print(f'{candidates["name"]} has votes {candidates["vote"]}')
+    print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
+
+
     
 
