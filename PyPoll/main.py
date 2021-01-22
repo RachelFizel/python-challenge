@@ -64,11 +64,13 @@ print ("-----------------------------")
 for key in candidates:
     vote_percentage = candidates[key] / total_count_of_votes
     vote_percentage = vote_percentage * 100
-    vote_percentage = round(vote_percentage, 4)
+    #vote_percentage = format(vote_percentage:.3f)
+    
+    
     
     #candidates.get
-    print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
-
+    #print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
+    print ("{}: {:.3f}% ({})".format(key,vote_percentage, candidates[key]))
 winner = max(candidates.items(), key=operator.itemgetter(1))[0]
 
 print ("-----------------------------")
