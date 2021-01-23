@@ -64,8 +64,6 @@ print ("-----------------------------")
 for key in candidates:
     vote_percentage = candidates[key] / total_count_of_votes
     vote_percentage = vote_percentage * 100
-    #vote_percentage = format(vote_percentage:.3f)
-    
     
     
     #candidates.get
@@ -78,5 +76,31 @@ print ("Winner: " + winner)
 print ("-----------------------------")
 
 
+#output analysis to a text file
+f = open("Election Results.txt", "w")
+
+
+f.write(" ")
+f.write ("Election Results\n")
+f.write ("-----------------------------\n")
+
+f.write ("Total Votes: " + str(total_count_of_votes) + "\n")
+f.write ("-----------------------------\n")
+
+#loop through each record in the dictionary and output the results
+for key in candidates:
+    vote_percentage = candidates[key] / total_count_of_votes
+    vote_percentage = vote_percentage * 100
     
+    
+    #candidates.get
+    #print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
+    f.write ("{}: {:.3f}% ({})\n".format(key,vote_percentage, candidates[key]))
+winner = max(candidates.items(), key=operator.itemgetter(1))[0]
+
+f.write ("-----------------------------\n")
+f.write ("Winner: " + winner + "\n")
+f.write ("-----------------------------\n")
+    
+f.close()    
 
