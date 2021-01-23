@@ -5,12 +5,12 @@ import csv
 
 import operator
 
-#csvpath = os.path.join("Resources", "election_data.csv")
-#the below is so I can step through the code in visual studio
-csvpath = os.path.join("C:\\Users\\rache\\Desktop\\python-challenge\\PyPoll\\Resources", "election_data.csv")
+
+#use the first line to step through the code in visual studio
+#csvpath = os.path.join("C:\\Users\\rache\\Desktop\\python-challenge\\PyPoll\\Resources", "election_data.csv")
+csvpath = os.path.join("Resources", "election_data.csv")
 
 total_count_of_votes = 0
-
 
 
 # Open the CSV
@@ -32,7 +32,6 @@ with open(csvpath) as csvfile:
         #count the number of votes cast
         total_count_of_votes += 1
 
-        #candidate = candidates[input_candidate] 
         #pull the vote count from the diction for the candidate that is in the input 
         vote_count = candidates.get(input_candidate)
         
@@ -48,6 +47,7 @@ with open(csvpath) as csvfile:
             
 
 
+#print results to the terminal
 print (" ")
 print ("Election Results")
 print ("-----------------------------")
@@ -55,20 +55,13 @@ print ("-----------------------------")
 print ("Total Votes: " + str(total_count_of_votes))
 print ("-----------------------------")
 
-
-
-# to print the whole dictionary
-# print (candidates)
-
 #loop through each record in the dictionary and output the results
 for key in candidates:
     vote_percentage = candidates[key] / total_count_of_votes
     vote_percentage = vote_percentage * 100
     
-    
-    #candidates.get
-    #print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
     print ("{}: {:.3f}% ({})".format(key,vote_percentage, candidates[key]))
+
 winner = max(candidates.items(), key=operator.itemgetter(1))[0]
 
 print ("-----------------------------")
@@ -76,9 +69,9 @@ print ("Winner: " + winner)
 print ("-----------------------------")
 
 
+
 #output analysis to a text file
 f = open("Election Results.txt", "w")
-
 
 f.write(" ")
 f.write ("Election Results\n")
@@ -92,10 +85,8 @@ for key in candidates:
     vote_percentage = candidates[key] / total_count_of_votes
     vote_percentage = vote_percentage * 100
     
-    
-    #candidates.get
-    #print (key, ": " , str(vote_percentage), "%  (", candidates[key] , ")")
     f.write ("{}: {:.3f}% ({})\n".format(key,vote_percentage, candidates[key]))
+    
 winner = max(candidates.items(), key=operator.itemgetter(1))[0]
 
 f.write ("-----------------------------\n")
